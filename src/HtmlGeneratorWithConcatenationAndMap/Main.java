@@ -23,15 +23,7 @@ public class Main {
         generator.generateHTML();
 
         // Remove HTML element
-        generator.removeHtmlElement2(scanner);
-
-
-//        int index = scanner.nextInt();
-//        generator.removeHtmlElement(index);
-
-        // Modified HTML
-        System.out.println("Modified HTML:");
-        generator.generateHTML();
+        generator.removeHtmlElementInteractive(scanner);
 
         scanner.close();
 

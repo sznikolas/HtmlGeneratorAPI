@@ -4,7 +4,7 @@ out/
 !**/src/test/**/out/
 
 ### Ignore packages
-src/HtmlGeneratorWithConcatenationAndMap
+
 
 ### Eclipse ###
 .apt_generated

@@ -1,15 +1,9 @@
 package HtmlGeneratorWithConcatenationAndMap;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class HTMLGenerator {
-
-
-
-//    private List<String> htmlParts = new LinkedList<>();
-private Map<String, Integer> htmlParts = new LinkedHashMap<>();
+    private Map<String, Integer> htmlParts = new LinkedHashMap<>();
 
     public HTMLGenerator(String name, String email) {
         addHtmlBeginning(name);
@@ -19,18 +13,9 @@ private Map<String, Integer> htmlParts = new LinkedHashMap<>();
         addHtmlTable(name, email);
         addHtmlHref();
         addHtmlEnding();
-
     }
 
     // HTML beginning
-//    public void addHtmlBeginning(String name) {
-//        htmlParts.add("<!DOCTYPE html>" +
-//                "\n\t<html>" +
-//                "\n\t\t<head>" +
-//                "\n\t\t\t<title> Hello World, Hello " + name + " </title>" +
-//                "\n\t\t</head>" +
-//                "\n\t\t<body>");
-//    }
     public void addHtmlBeginning(String name) {
         String htmlBeginning = "<!DOCTYPE html>" +
                 "\n\t<html>" +
@@ -41,49 +26,25 @@ private Map<String, Integer> htmlParts = new LinkedHashMap<>();
         htmlParts.put(htmlBeginning, 0);
     }
 
-//    public void addHtmlH1(String content) {
-//        htmlParts.add("\n\t\t\t<h1>" + "Interju teszt - " + content + "</h1>");
-//    }
-    public void addHtmlH1(String content) {
-        String h1 = "\n\t\t\t<h1>" + "Interview test - " + content + "</h1>";
-        htmlParts.put(h1, 1);
-    }
-
-//    public void addHtmlPElementName(String content) {
-//        htmlParts.add("\n\t\t\t<p>" + "Felhasznalo neve" + "</p>" +
-//                "\n\t\t\t<p>" + content + "</p>");
-//    }
     public void addHtmlPElementName(String content) {
         String pElementName = "\n\t\t\t<p>" + "Username" + "</p>" +
                 "\n\t\t\t<p>" + content + "</p>";
-        htmlParts.put(pElementName, 2);
+        htmlParts.put(pElementName, 1);
     }
 
-//    public void addHtmlPElementEmail(String content) {
-//        htmlParts.add("\n\t\t\t<p>" + "Felhasznalo emailje" + "</p>" +
-//                "\n\t\t\t<p>" + content + "</p>");
-//    }
     public void addHtmlPElementEmail(String content) {
         String pElementEmail = "\n\t\t\t<p>" + "User email " + "</p>" +
                 "\n\t\t\t<p>" + content + "</p>";
-        htmlParts.put(pElementEmail, 3);
+        htmlParts.put(pElementEmail, 2);
     }
 
-//    public void addHtmlTable(String name, String email) {
-//        htmlParts.add("\n\t\t\t<table>" +
-//                "\n\t\t\t\t<tr>" +
-//                "\n\t\t\t\t\t<td>Name:</td>" +
-//                "\n\t\t\t\t\t<td>" + name + " </td>" +
-//                "\n\t\t\t\t</tr>" +
-//                "\n\t\t\t\t<tr>" +
-//                "\n\t\t\t\t\t<td>Email:</td>" +
-//                "\n\t\t\t\t\t<td>" + email + "</td>" +
-//                "\n\t\t\t\t</tr>" +
-//                "\n\t\t\t</table>");
-//    }
+    public void addHtmlH1(String content) {
+        String h1 = "\n\t\t\t<h1>" + "Interview test - " + content + "</h1>";
+        htmlParts.put(h1, 3);
+    }
 
     public void addHtmlTable(String name, String email) {
-        String table = "\n\t\t\t<table>" +
+        String table = "\n\t\t\t<table style=\"border: 2px solid;\"" +
                 "\n\t\t\t\t<tr>" +
                 "\n\t\t\t\t\t<td>Name:</td>" +
                 "\n\t\t\t\t\t<td>" + name + " </td>" +
@@ -96,32 +57,63 @@ private Map<String, Integer> htmlParts = new LinkedHashMap<>();
         htmlParts.put(table, 4);
     }
 
-//    public void addHtmlHref() {
-//        htmlParts.add("\n\t\t\t<a href=\"https://www.w3schools.com\">Visit W3Schools</a>");
-//    }
-
     public void addHtmlHref() {
         String href = "\n\t\t\t<a href=\"https://www.w3schools.com\">Visit W3Schools</a>";
         htmlParts.put(href, 5);
     }
 
     // HTML ending
-//    public void addHtmlEnding() {
-//        htmlParts.add("\n\t\t</body>" +
-//                "\n\t</html>");
-//    }
-
     public void addHtmlEnding() {
         String htmlEnding = "\n\t\t</body>\n\t</html>";
         htmlParts.put(htmlEnding, 6);
     }
 
-    // Generate HTML
-//    public void generateHTML() {
-//        for (String part : htmlParts) {
-//            System.out.println(part);
+//    public void removeHtmlElement(Scanner scanner) {
+//        Set<Integer> elementsToRemove = new HashSet<>();
+//        boolean repeat = true;
+//        while (repeat) {
+//            System.out.println("Give me the index of the element to remove (1-5) or type '0' to finish");
+//            if (!elementsToRemove.contains(1)) System.out.println("1 - delete <p> element with name");
+//            if (!elementsToRemove.contains(2)) System.out.println("2 - delete <p> element with email");
+//            if (!elementsToRemove.contains(3)) System.out.println("3 - delete <h1> element");
+//            if (!elementsToRemove.contains(4)) System.out.println("4 - delete <table> element");
+//            if (!elementsToRemove.contains(5)) System.out.println("5 - delete <a> element");
+//
+//            String input = scanner.nextLine();
+//            if (input.equals("0")) {
+//                repeat = false;
+//            }
+//
+//            String[] choices = input.split("[,\\s]+");
+//            boolean validChoice = true;
+//
+//            for (String choiceStr : choices) {
+//                try {
+//                    int choice = Integer.parseInt(choiceStr.trim());
+//                    if (choice < 1 || choice > 5 || !htmlParts.containsValue(choice)) {
+//                        System.out.println("Invalid choice: " + choice);
+//                        validChoice = false;
+//                    } else {
+//                        elementsToRemove.add(choice);
+//                    }
+//                } catch (NumberFormatException e) {
+//                    System.out.println("Invalid input: " + choiceStr);
+//                    validChoice = false;
+//                }
+//            }
+//
+//            if (validChoice) {
+//                for (int element : elementsToRemove) {
+//                    removeHtmlElement(element);
+//                }
+//                System.out.println("Generated HTML:");
+//                generateHTML();
+//            }
 //        }
 //    }
+
+
+    // Generate HTML
     public void generateHTML() {
         for (String part : htmlParts.keySet()) {
             System.out.println(part);
@@ -129,69 +121,80 @@ private Map<String, Integer> htmlParts = new LinkedHashMap<>();
     }
 
     // Remove element
-//    public void removeHtmlElement(int index) {
-//        if (index >= 1 && index < htmlParts.size() - 1) {
-//            htmlParts.remove(index);
-//        }
-//    }
-
     public void removeHtmlElement(int index) {
         String elementToRemove = null;
         for (Map.Entry<String, Integer> entry : htmlParts.entrySet()) {
             if (entry.getValue() == index) {
                 elementToRemove = entry.getKey();
-                break;
             }
         }
         if (elementToRemove != null) {
             htmlParts.remove(elementToRemove);
-//            htmlBuilder = new StringBuilder(htmlBuilder.toString().replace(elementToRemove, ""));
         }
     }
 
-    public void removeHtmlElement2(Scanner scanner) {
+    public void removeHtmlElementInteractive(Scanner scanner) {
+        Set<Integer> elementsToRemove = new HashSet<>();
         boolean repeat = true;
+
         while (repeat) {
-//            System.out.println("Give me the index of the element to remove (1-5)");
-            System.out.println("Give me the index of the element to remove (1-5) or type '0' to finish");
-            System.out.println("1 - delete <p> element with name");
-            System.out.println("2 - delete <p> element with email");
-            System.out.println("3 - delete <h1> element");
-            System.out.println("4 - delete <table> element");
-            System.out.println("5 - delete <a> element");
-            System.out.println("0 - Exit");
+            displayRemovableElements();
+            String input = scanner.nextLine();
 
-
-            int choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    removeHtmlElement(1); // <p> element with name
-                    break;
-                case 2:
-                    removeHtmlElement(2); // <p> element with email
-                    break;
-                case 3:
-                    removeHtmlElement(3); // <h1> element
-                    break;
-                case 4:
-                    removeHtmlElement(4); // <table> element
-                    break;
-                case 5:
-                    removeHtmlElement(5); // <a> element
-                    break;
-                case 0:
-                    repeat = false;
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please choose again.");
+            if (input.equals("0")) {
+                repeat = false;
             }
-            // Minden egyes választás után megjelenítjük a generált HTML-t
-            System.out.println("Generált HTML:");
+
+            parseElements(input, elementsToRemove);
+
+        }
+    }
+
+    private void displayRemovableElements() {
+        System.out.println("Give me the index of the element to remove (1-5) or type '0' to finish");
+        if (htmlParts.containsValue(1)) System.out.println("1 - delete <p> element with name");
+        if (htmlParts.containsValue(2)) System.out.println("2 - delete <p> element with email");
+        if (htmlParts.containsValue(3)) System.out.println("3 - delete <h1> element");
+        if (htmlParts.containsValue(4)) System.out.println("4 - delete <table> element");
+        if (htmlParts.containsValue(5)) System.out.println("5 - delete <a> element");
+    }
+
+    private void parseElements(String input, Set<Integer> elementsToRemove) {
+        String[] choices = input.split("[,\\s]+");
+        Set<Integer> tempElementsToRemove = new HashSet<>();
+        boolean validChoice = true;
+
+        for (String choiceStr : choices) {
+            try {
+                int choice = Integer.parseInt(choiceStr.trim());
+                if ((choice < 1 || choice > 5) || !htmlParts.containsValue(choice)) {
+                    System.out.println("Invalid choice: " + choice);
+                    validChoice = false;
+                } else {
+                    tempElementsToRemove.add(choice);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input: " + choiceStr);
+                validChoice = false;
+            }
+        }
+
+        if (validChoice) {
+            elementsToRemove.addAll(tempElementsToRemove);
+            removeAndGenerateHtml(elementsToRemove);
+        }
+    }
+
+    private void removeAndGenerateHtml(Set<Integer> elementsToRemove) {
+        if (!(elementsToRemove.isEmpty())) {
+            for (int element : elementsToRemove) {
+                removeHtmlElement(element);
+            }
+
+            System.out.println("Generated HTML:");
             generateHTML();
         }
     }
-
-
 
 
 }
