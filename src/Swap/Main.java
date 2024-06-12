@@ -1,4 +1,4 @@
-package Test;
+package Swap;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,9 +21,8 @@ public class Main {
     // This means that when you pass an Integer to a method, you are passing a copy of the reference to the object,
     // not the actual reference itself. Therefore, changes to the reference inside the method
     // do not affect the original reference outside the method.
-    
-    // Mutable (változtatható): Az objektum állapota módosítható a létrehozása után.
-    //Immutable (változtathatatlan): Az objektum állapota nem módosítható a létrehozása után.
+
+
 
     public static void swap(Integer[] arr) {
         Integer temp = arr[0];

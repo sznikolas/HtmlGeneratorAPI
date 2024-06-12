@@ -1,2 +1,4 @@
-package CloneExample;public class Student {
+package CloneExample;
+
+final class Student {
 }
